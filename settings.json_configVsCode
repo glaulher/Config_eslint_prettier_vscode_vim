@@ -1,0 +1,89 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Dracula",
+  
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 18,
+  "editor.lineHeight": 24,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.renderLineHighlight": "gutter",
+  "workbench.editor.labelFormat":"short",
+  
+  "explorer.compactFolders":false,
+  "terminal.integrated.fontSize": 14,  
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "breadcrumbs.enabled": true,
+  "editor.parameterHints.enabled": false,
+  
+  
+  "[javascript]":{
+    "editor.codeActionsOnSave": {
+         "source.fixAll.eslint": true,
+       },
+  },
+
+  "[javascriptreact]":{
+    "editor.codeActionsOnSave": {
+         "source.fixAll.eslint": true,
+       },
+  },
+
+  "[typescript]":{
+    "editor.codeActionsOnSave": {
+         "source.fixAll.eslint": true,
+       },
+  },
+
+  "[typescriptreact]":{
+    "editor.codeActionsOnSave": {
+         "source.fixAll.eslint": true,
+       },
+  },
+
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    ".prettierrc": "json"
+  },
+
+  "window.zoomLevel": -2,
+
+  "emmet.syntaxProfiles": {"javascript": "jsx"},
+  "emmet.includeLanguages": {"javascript": "javascriptreact"},
+
+  "git.enableSmartCommit": true,
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  "typescript.tsserver.log": "verbose",
+
+ // "eslint.autoFixOnSave": true,
+  // "eslint.validate":[
+  //   {
+  //     "language":"javascript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language":"javascriptreact",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language":"typescript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language":"typescriptreact",
+  //     "autoFix": true
+  //   }
+  // ],
+  // "terminal.integrated.rendererType": "dom",
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true,
+  // },
+ 
+}
