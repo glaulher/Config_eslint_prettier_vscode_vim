@@ -53,37 +53,27 @@
     ".prettierrc": "json"
   },
 
-  "window.zoomLevel": -2,
-
   "emmet.syntaxProfiles": {"javascript": "jsx"},
   "emmet.includeLanguages": {"javascript": "javascriptreact"},
 
   "git.enableSmartCommit": true,
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "typescript.tsserver.log": "verbose",
 
- // "eslint.autoFixOnSave": true,
-  // "eslint.validate":[
-  //   {
-  //     "language":"javascript",
-  //     "autoFix": true
-  //   },
-  //   {
-  //     "language":"javascriptreact",
-  //     "autoFix": true
-  //   },
-  //   {
-  //     "language":"typescript",
-  //     "autoFix": true
-  //   },
-  //   {
-  //     "language":"typescriptreact",
-  //     "autoFix": true
-  //   }
-  // ],
-  // "terminal.integrated.rendererType": "dom",
-  // "editor.codeActionsOnSave": {
-  //   "source.fixAll.eslint": true,
-  // },
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  
+    
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash"
+    },
+    "zsh": {
+      "path": "/usr/bin/zsh"
+    }
+  },
+"terminal.integrated.defaultProfile.linux": "zsh",
+  
+  
+  "typescript.tsserver.log": "verbose",
+  "tabnine.experimentalAutoImports": true,
+  "files.autoSave": "afterDelay",
  
 }
