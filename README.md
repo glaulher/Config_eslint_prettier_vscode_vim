@@ -12,3 +12,10 @@ yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 yarn eslint --init 
 yarn add -D eslint-import-resolver-typescript
 ```
+Case error , where eslint not work:
+
+```shell
+npm install -g install-peerdeps
+install-peerdeps --dev eslint-config-airbnb
+install-peerdeps --dev eslint-config-airbnb-base
+```
