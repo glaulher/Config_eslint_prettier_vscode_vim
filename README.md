@@ -7,6 +7,8 @@ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint es
 
 ## Package config eslint react native
 
+```shell
 yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 yarn eslint --init 
 yarn add -D eslint-import-resolver-typescript
+```
