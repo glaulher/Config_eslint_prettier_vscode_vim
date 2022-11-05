@@ -1,0 +1,487 @@
+" packadd!dracula
+" Plug
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'arcticicestudio/nord-vim'
+
+" Sobre os plugins:
+" vim-startify - adicionar menu tela inicial. 
+" indentline -adiciona linha pontilhada na vertical na identação.
+" nerdtree - arvore de menu.
+" vim-devicons - adicionar icones no nerd tree , precisa de nerd fonts
+" vim-airline - barra de status.
+
+""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+""              Plugins                 "" 
+""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.vim/pack/git-plugins/start')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdcommenter'
+Plug 'w0rp/ale'
+Plug 'mattn/emmet-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'yggdroot/indentline'
+Plug 'mhinz/vim-startify'
+Plug 'eslint/eslint'
+Plug 'prettier/vim-prettier'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'peitalin/vim-jsx-typescript'" JSX typescript 
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
+Plug 'luochen1990/rainbow'
+
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+""           Set Configuração           "" 
+""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+
+"******************
+" executar plugin *
+"******************
+
+filetype plugin on
+
+"**************************
+" ativar sintaxe colorida *
+"**************************
+
+syntax on
+
+""""""""""""""""""""""""""""""""
+" ativar indentação automática "
+""""""""""""""""""""""""""""""""
+
+set autoindent
+
+"**********************************************************
+" ativa indentação inteligente, o Vim tentará adivinhar   *
+" qual é a melhor indentação para o código quando você    *
+" efetuar quebra de linha. Funciona bem para linguagem C  *
+"**********************************************************
+
+set smartindent
+
+"****************************************************************
+" por padrão o vim armazena os últimos 50 comandos que você     * 
+" digitou em seu histórico. armazena os últimos 5000            *                                   *
+"****************************************************************
+
+set history=5000
+
+"****************************
+" ativar numeração de linha *
+"****************************
+
+set number
+
+"***************************************************
+" destaca a linha em que o cursor está posicionado *
+" ótimo para quem não enxerga muito bem            *
+"***************************************************
+
+set cursorline
+
+"**********************************************************
+" ativa o clique do mouse para navegação pelos documentos *
+"**********************************************************
+
+set mouse=a
+
+"****************************************************************
+" ativa o compartilhamento de área de transferência entre o Vim *
+" e a interface gráfica                                         *
+"****************************************************************
+ 
+set clipboard=unnamedplus "unnamed,unnamedplus
+
+"***************************************************
+" converte o tab em espaços em branco              *
+" ao teclar tab o Vim irá substutuir por 2 espaços *
+"***************************************************
+
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2
+
+
+"****************************
+" Configura o tipo de fonte *
+"****************************
+
+set guifont=Anonymice\ Nerd\ Font\ Mono:h12 "DroidSansMono\ Nerd\ Font\ Mono:h12  Fira\ Code:h12  FontAwesome:h12
+
+"*********
+" Folder *
+"*********
+
+set foldmethod=syntax
+set foldlevel=99
+
+"*******************************************
+"codificação de saída mostrada no terminal * 
+"*******************************************
+
+set encoding=utf8
+
+"*****************
+" Tema de cores  *
+"*****************               
+
+colorscheme abstract " materialbox - dracula
+
+
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+""           map teclado         "" 
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+
+"*************************************
+" Habilita e desabilita o identiline *
+"*************************************
+
+map <c-i> :IndentLinesToggle<cr>  " map <c-k>i :IndentLinesToggle<cr>
+
+"*****************
+" Colapsa o menu *
+"*****************
+
+map <C-n> :NERDTreeToggle<cr>
+
+"**************************************************
+" abrir o terminal na parte inferior com ctrl + t *
+"**************************************************
+
+map <c-t> :bel term ++rows=12<cr>
+
+"***********
+" Comentar *
+"***********
+
+map cc <Plug>NERDCommenterInvert
+map cs <Plug>NERDCommenterSexy
+
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+""      nnoremap teclado         "" 
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+
+
+"*******************************************************
+" ao teclar a barra de espaço no modo normal, o Vim    *
+" irá colapsar ou expandir o bloco de código do cursor *
+" foldlevel é a partir de que nível de indentação o    *
+" código iniciará colapsado                            *
+"*******************************************************
+
+nnoremap <space> za
+
+"*****************************
+" navegação entre os buffers *
+"*****************************
+
+nnoremap <M-Right> :bn<cr> "nnoremap <C-m> :bn<CR>
+
+nnoremap <M-Left> :bp<cr> "nnoremap <S-m> :bp<CR>
+
+nnoremap <c-x> :bp\|bd #<cr>
+
+"********************************************************
+" passar o cursor sobre uma palavra, vejo o diagnóstico *
+"********************************************************
+
+nnoremap <silent> k :call CocAction('doHover')<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+"*************
+" fechar tab *
+"*************
+
+nnoremap <c-X> :tabclose<CR>
+
+"*******
+" Sair *
+"*******
+
+nnoremap <c-q> :q!<CR>
+
+"*********
+" Salvar *
+"*********
+nnoremap <c-s> :w<CR>
+
+
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+""      inoremap teclado         "" 
+"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
+
+"****************
+" Autocompletar *
+"****************
+
+" Usa enter para confirmar e completar, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
+""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
+""      Variável Global       "" 
+""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
+
+"**********
+" airline *
+"**********
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_statusline_ontop=0
+let g:airline_theme='base16_twilight'
+let g:airline#extensions#tabline#formatter = 'default'
+
+
+"********
+" ctrlp *
+"********
+
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(swp|zip)$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_show_hidden = 1
+
+"***********
+" NerdTree *
+"***********
+
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
+"*************
+" indentLine *
+"*************
+
+let g:indentLine_enabled = 1
+
+"***************
+" Git NerdTree *
+"***************
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+                
+
+let g:NERDTreeGitStatusUseNerdFonts = 1 
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+"let g:NERDTreeGitStatusShowClean = 1 
+"let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
+
+"********************************
+" Git linha que foram alteradas *
+"********************************
+
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_modified_removed = '-'
+   
+"*****************
+" Color Brackets *
+"*****************
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle   
+
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'guis': [''],
+\	'cterms': [''],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'*': {},
+\		'markdown': {
+\			'parentheses_options': 'containedin=markdownCode contained',
+\		},
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\		},
+\		'haskell': {
+\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+\		},
+\		'ocaml': {
+\			'parentheses': ['start=/(\ze[^*]/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\[|/ end=/|\]/ fold', 'start=/{/ end=/}/ fold'],
+\		},
+\		'tex': {
+\			'parentheses_options': 'containedin=texDocZone',
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\		},
+\		'vim': {
+\			'parentheses_options': 'containedin=vimFuncBody,vimExecute',
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold'],
+\		},
+\		'xml': {
+\			'syn_name_prefix': 'xmlRainbow',
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'xhtml': {
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((script|style|area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'lua': {
+\			'parentheses': ["start=/(/ end=/)/", "start=/{/ end=/}/", "start=/\\v\\[\\ze($|[^[])/ end=/\\]/"],
+\		},
+\		'perl': {
+\			'syn_name_prefix': 'perlBlockFoldRainbow',
+\		},
+\		'php': {
+\			'syn_name_prefix': 'phpBlockRainbow',
+\			'contains_prefix': '',
+\			'parentheses': ['start=/(/ end=/)/ containedin=@htmlPreproc contains=@phpClTop', 'start=/\[/ end=/\]/ containedin=@htmlPreproc contains=@phpClTop', 'start=/{/ end=/}/ containedin=@htmlPreproc contains=@phpClTop', 'start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold contains_prefix=TOP'],
+\		},
+\		'stylus': {
+\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+\		},
+\		'css': 0,
+\       'nerdtree': 0, 
+\		'sh': 0,
+\		'vimwiki': 0,
+\	}
+\}
+                
+"*********
+" Eslint *
+"*********
+
+let g:ale_linters = {'python': ['flake8', 'pylint'], 'javascript': ['eslint']}
+let g:ale_completion_enabled = 0
+" let g:ale_fixers = {
+"      'python': ['yapf'],
+"  }
+" nmap <F10> :ALEFix<CR>
+" let g:ale_fix_on_save = 1
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+""""""""""""""""""""""""
+""""""""""""""""""""""""
+""      autocmd       "" 
+""""""""""""""""""""""""
+""""""""""""""""""""""""
+
+"**********************************************
+" Highlight symbol under cursor on CursorHold *
+"**********************************************
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+"**********************************
+" Abre o nerdtree junto com o vim *
+"**********************************
+
+autocmd VimEnter * NERDTree | wincmd p
+
+"***********************************
+" Fecha o nerdtree junto com o vim *
+"***********************************
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"*************************************************
+" força o vim a varrer todo o buffer ao destacar *
+"*************************************************
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+"**************
+" PlugInstall *
+"**************
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+
+
+
+
+
+
+
+
+" if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+"   let g:coc_global_extensions += ['coc-prettier']
+" endif
+
+" if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+"   let g:coc_global_extensions += ['coc-eslint']
+" endif
+
+
+
+"function! ShowDocIfNoDiagnostic(timer_id)
+"  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+"    silent call CocActionAsync('doHover')
+"  endif
+"endfunction
+
+"function! s:show_hover_doc()
+"  call timer_start(500, 'ShowDocIfNoDiagnostic')
+"endfunction
+
+" autocmd CursorHoldI * :call <SID>show_hover_doc()
+" autocmd CursorHold * :call <SID>show_hover_doc()
+
+
