@@ -44,6 +44,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'luochen1990/rainbow'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 call plug#end()
 
@@ -221,7 +222,7 @@ endfunction
 " fechar tab *
 "*************
 
-nnoremap <c-X> :tabclose<CR>
+nnoremap <c-z> :tabclose<CR>
 
 "*******
 " Sair *
@@ -265,7 +266,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_statusline_ontop=0
-let g:airline_theme='base16_twilight'
+let g:airline_theme='abstract'
 let g:airline#extensions#tabline#formatter = 'default'
 
 
@@ -323,6 +324,16 @@ let g:gitgutter_sign_modified = '✹'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '-'
+ 
+"****************** 
+"vim-visual-multi *
+"******************
+ 
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n (Visual studio atalho ctrl + d)
+let g:VM_maps['find-previous']      = '<S-m>'
+ 
    
 "*****************
 " Color Brackets *
