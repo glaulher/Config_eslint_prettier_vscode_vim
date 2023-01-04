@@ -10,7 +10,7 @@ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint es
 ```shell
 yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 yarn eslint --init 
-yarn add -D eslint-import-resolver-typescript
+yarn add -D eslint-import-resolver-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 Case error , where eslint not work:
 
