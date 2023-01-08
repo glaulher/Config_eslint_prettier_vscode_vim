@@ -1,5 +1,6 @@
 alt+z = desabilita o scroll
 ctrl+b = toogleTree
+ctrl+0 = muda do arquivo para o explorer
 ctrl+l seleciona a linha
 alt+número = muda para aba
 ctrl+tab = navega entre abas (volta para o código quando está no terminal)
